@@ -4,17 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { AuthContext } from './contexts/AuthProvider';
+import AuthProvider from './contexts/AuthProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* auth contexts added <App /> is the props - children*/}
-    <App />
-{/* 
-    <AuthContext>
+    {/* <App /> */}
+
+    <AuthProvider>
       <App />
-    </AuthContext> */}
+    </AuthProvider>
   </React.StrictMode>
 );
 
