@@ -5,23 +5,37 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
-    const {user, createUser} = useContext(AuthContext);
+    const {user, createUser, updateUserProfile} = useContext(AuthContext);
     const handleRegister = (event) =>{
         event.preventDefault();
+        // get the form data
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         const name = form.name.value;
         const photo = form.photo.value;
-        console.log(email, password, name, photo);
+        // console.log(email, password, name, photo);
+        const profile = {
+            displayName : name, 
+            photoURL : photo
+        }
+        // use firebase function to create user
         createUser(email, password)
         .then((userCredential)=>{
             const user = userCredential.user;
-            console.log(user);
+            // console.log(user);
         }).catch(err=>console.error(err.message))
+
+        // update user profile with customized data
+        updateUserProfile(profile)
+        .then(()=>{})
+        .catch(err=>console.error(err.message))
+
+        console.log(user);
+
     }
     return (
-        <div className='w-25 mx-auto my-4'>
+        <div className='w-50 mx-auto my-4'>
             <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="form-email">
                     <Form.Label>Email address</Form.Label>
