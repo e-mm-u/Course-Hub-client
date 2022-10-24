@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 const Login = () => {
     return (
-        <div className='w-25 mx-auto'>
+        <div className='w-25 mx-auto my-4'>
             <Form >
                 <Form.Group className="mb-3" controlId="form-email">
                     <Form.Label>Email address</Form.Label>
