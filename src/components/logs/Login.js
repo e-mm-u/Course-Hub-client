@@ -6,9 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
-    const { logIn } = useContext(AuthContext);
-    const [err, seterr] = useState(' ')
-    const navigate = useNavigate()
+    const { user, logIn, googleLogin } = useContext(AuthContext);
+    const [err, seterr] = useState(' ');
+    const navigate = useNavigate();
+
     const handleLogin = event => {
         event.preventDefault();
         seterr(' ')
@@ -25,6 +26,14 @@ const Login = () => {
             }).catch(err => seterr(err.message))
 
     }
+    const handleGoogleLogin = () => {
+        console.log('google login clicked');
+        googleLogin()
+            .then((userCredential) => {
+                const user = userCredential.user;
+            }).catch(err => console.error(err.message))
+    }
+
     return (
         <div className='w-50 mx-auto my-4'>
             <Form onSubmit={handleLogin}>
@@ -47,9 +56,9 @@ const Login = () => {
 
                 <Form.Group className="mb-3">
                     <Form.Text className='text-danger'>
-                    {
-                        err ? <p >{err}</p> : <p> </p>
-                    }
+                        {
+                            err ? <p >{err}</p> : <p> </p>
+                        }
                     </Form.Text>
                 </Form.Group>
 
@@ -69,7 +78,7 @@ const Login = () => {
             </div>
             {/* sign up buttons */}
             <div className='d-flex flex-column gap-2'>
-                <Button variant="light">
+                <Button onClick={handleGoogleLogin} variant="light">
                     Continue with google
                 </Button>
                 <Button variant="light">
