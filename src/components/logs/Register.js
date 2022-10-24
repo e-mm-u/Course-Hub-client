@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
-    const {user, createUser, updateUserProfile} = useContext(AuthContext);
-    const handleRegister = (event) =>{
+    let { user } = useContext(AuthContext);
+    const { createUser, updateUserProfile, loading } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleRegister = (event) => {
         event.preventDefault();
         // get the form data
         const form = event.target;
@@ -15,31 +19,33 @@ const Register = () => {
         const name = form.name.value;
         const photo = form.photo.value;
         // console.log(email, password, name, photo);
-        const profile = {
-            displayName : name, 
-            photoURL : photo
-        }
+       
         // use firebase function to create user
         createUser(email, password)
-        .then((userCredential)=>{
-            const user = userCredential.user;
-            // console.log(user);
-        }).catch(err=>console.error(err.message))
+            .then((userCredential) => {
+                user = userCredential.user;
+                console.log('create user  ', user);
+                handleUpdateProfile (name, photo);
+                navigate('/');
+            }).catch(err => console.error(err.message))
 
+    }
+    const handleUpdateProfile = (name, photo) => {
+        const profile = {
+            displayName: name,
+            photoURL: photo
+        }
         // update user profile with customized data
         updateUserProfile(profile)
-        .then(()=>{})
-        .catch(err=>console.error(err.message))
-
-        console.log(user);
-
+            .then(() => { console.log('updated user ', user); })
+            .catch(err => console.error(err.message))
     }
     return (
         <div className='w-50 mx-auto my-4'>
             <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="form-email">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control name='email' type="email" placeholder="Enter email" required/>
+                    <Form.Control name='email' type="email" placeholder="Enter email" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="form-name">
@@ -54,7 +60,7 @@ const Register = () => {
 
                 <Form.Group className="mb-3" controlId="form-password">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control name='password' type="password" placeholder="Password" required/>
+                    <Form.Control name='password' type="password" placeholder="Password" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="form-confirm-password">

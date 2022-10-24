@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
+    const { logIn } = useContext(AuthContext);
+    const [err, seterr] = useState(' ')
+    const navigate = useNavigate()
+    const handleLogin = event => {
+        event.preventDefault();
+        seterr(' ')
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logIn(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+                form.reset();
+                navigate('/');
+            }).catch(err => seterr(err.message))
+
+    }
     return (
         <div className='w-50 mx-auto my-4'>
-            <Form >
+            <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="form-email">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control name='email' type="email" placeholder="Enter email" />
@@ -25,8 +46,10 @@ const Login = () => {
 
 
                 <Form.Group className="mb-3">
-                    <Form.Text className="text-muted">
-                        error
+                    <Form.Text className='text-danger'>
+                    {
+                        err ? <p >{err}</p> : <p> </p>
+                    }
                     </Form.Text>
                 </Form.Group>
 
