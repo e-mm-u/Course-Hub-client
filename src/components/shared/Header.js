@@ -21,12 +21,8 @@ const Header = () => {
                     <LinkContainer to='/'>
                         <Navbar.Brand>Course-Hub</Navbar.Brand>
                     </LinkContainer>
-                    <Nav className="me-auto">
-                        <LinkContainer to='/'>
-                            <Nav.Link >Home</Nav.Link>
-                        </LinkContainer>
-
-                        <LinkContainer to='/'>
+                    <Nav className="me-auto d-flex flex-wrap">
+                        <LinkContainer to='/courses'>
                             <Nav.Link>Courses</Nav.Link>
                         </LinkContainer>
 
@@ -57,9 +53,7 @@ const Header = () => {
                                 <><LinkContainer to='/login'>
                                     <Nav.Link>LogIn</Nav.Link>
                                 </LinkContainer>
-                                    <LinkContainer to='/register'>
-                                        <Nav.Link>Register</Nav.Link>
-                                    </LinkContainer>
+
                                 </>
                         }
 

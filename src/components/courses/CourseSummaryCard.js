@@ -12,7 +12,7 @@ const CourseSummaryCard = ({course}) => {
             <span>{rating}  </span>
             <span>{requiredTime}  </span>
             <span>{fee}</span>
-            <LinkContainer to={`/course/${course_id}`}><Button>Details</Button></LinkContainer>
+            <LinkContainer to={`/courses/course/${course_id}`}><Button>Details</Button></LinkContainer>
             
         </div>
     );

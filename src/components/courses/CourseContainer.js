@@ -1,7 +1,9 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 import CourseSummaryCard from './CourseSummaryCard';
 
-const CourseContainer = ({ courses }) => {
+const CourseContainer = () => {
+    const courses = useLoaderData();
     return (
         <div className='d-flex flex-wrap gap-4 justify-content-center'>
             {
