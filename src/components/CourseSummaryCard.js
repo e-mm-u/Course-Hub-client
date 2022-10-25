@@ -1,8 +1,9 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const CourseSummaryCard = ({course}) => {
-    const {photoURL, title, details, rating, fee, requiredTime} = course;
+    const {course_id, photoURL, title, details, rating, fee, requiredTime} = course;
     return (
         <div>
             <Image src={photoURL} style={{height : '100px', width: '250px'}}/>
@@ -11,6 +12,8 @@ const CourseSummaryCard = ({course}) => {
             <span>{rating}  </span>
             <span>{requiredTime}  </span>
             <span>{fee}</span>
+            <LinkContainer to={`/course/${course_id}`}><Button>Details</Button></LinkContainer>
+            
         </div>
     );
 };
