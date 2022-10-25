@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
-    const { user, logIn, googleLogin } = useContext(AuthContext);
+    const { user, logIn, googleLogin, githubLogin } = useContext(AuthContext);
     const [err, seterr] = useState(' ');
     const navigate = useNavigate();
 
@@ -31,7 +31,15 @@ const Login = () => {
         googleLogin()
             .then((userCredential) => {
                 const user = userCredential.user;
+                navigate('/');
             }).catch(err => console.error(err.message))
+    }
+    const handleGithubLogin = () => {
+        githubLogin()
+            .then((userCredential)=>{
+                const user = userCredential.user;
+                navigate('/');
+            }).catch(err=>console.error(err.message))
     }
 
     return (
@@ -81,7 +89,7 @@ const Login = () => {
                 <Button onClick={handleGoogleLogin} variant="light">
                     Continue with google
                 </Button>
-                <Button variant="light">
+                <Button onClick={handleGithubLogin} variant="light">
                     Continue with github
                 </Button>
                 <Button variant="light">
