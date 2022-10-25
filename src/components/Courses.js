@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import CourseContainer from './CourseContainer';
-import CourseSummaryCard from './CourseSummaryCard';
 import Sidebar from './Sidebar';
 
 const Courses = () => {
@@ -16,7 +15,7 @@ const Courses = () => {
                     </Col>
                     <Col xs={9} className='border border-danger'>
                         <CourseContainer courses={courses}>
-                            
+
                         </CourseContainer>
                     </Col>
                 </Row>
