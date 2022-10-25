@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
-    const { user, logIn, googleLogin, githubLogin } = useContext(AuthContext);
+    const { user, logIn, googleLogin, githubLogin, facebookLogin } = useContext(AuthContext);
     const [err, seterr] = useState(' ');
     const navigate = useNavigate();
 
@@ -36,6 +36,13 @@ const Login = () => {
     }
     const handleGithubLogin = () => {
         githubLogin()
+            .then((userCredential)=>{
+                const user = userCredential.user;
+                navigate('/');
+            }).catch(err=>console.error(err.message))
+    }
+    const handleFacebookLogin = () => {
+        facebookLogin()
             .then((userCredential)=>{
                 const user = userCredential.user;
                 navigate('/');
@@ -92,7 +99,7 @@ const Login = () => {
                 <Button onClick={handleGithubLogin} variant="light">
                     Continue with github
                 </Button>
-                <Button variant="light">
+                <Button onClick={handleFacebookLogin} variant="light">
                     Continue with facebook
                 </Button>
             </div>
