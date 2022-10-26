@@ -2,13 +2,17 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
     const { user, logIn, googleLogin, githubLogin, facebookLogin } = useContext(AuthContext);
     const [err, seterr] = useState(' ');
     const navigate = useNavigate();
+    
+    const location = useLocation();
+    // get the location from private route if login page is visited beacause of private route
+    let from = location.state?.from?.pathname || '/';
 
     const handleLogin = event => {
         event.preventDefault();
@@ -22,7 +26,7 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log(user);
                 form.reset();
-                navigate('/');
+                navigate(from , {replace:true});
             }).catch(err => seterr(err.message))
 
     }
@@ -31,21 +35,21 @@ const Login = () => {
         googleLogin()
             .then((userCredential) => {
                 const user = userCredential.user;
-                navigate('/');
+                navigate(from , {replace:true});
             }).catch(err => console.error(err.message))
     }
     const handleGithubLogin = () => {
         githubLogin()
             .then((userCredential)=>{
                 const user = userCredential.user;
-                navigate('/');
+                navigate(from , {replace:true});
             }).catch(err=>console.error(err.message))
     }
     const handleFacebookLogin = () => {
         facebookLogin()
             .then((userCredential)=>{
                 const user = userCredential.user;
-                navigate('/');
+                navigate(from , {replace:true});
             }).catch(err=>console.error(err.message))
     }
 

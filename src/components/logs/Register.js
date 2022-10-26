@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
@@ -9,6 +10,10 @@ const Register = () => {
     let { user } = useContext(AuthContext);
     const { createUser, updateUserProfile, loading } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const location = useLocation();
+    // get the location from private route if login page is visited beacause of private route
+    let from = location.state?.from?.pathname || '/';
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -26,7 +31,7 @@ const Register = () => {
                 user = userCredential.user;
                 console.log('create user  ', user);
                 handleUpdateProfile (name, photo);
-                navigate('/');
+                navigate(from , {replace:true});
             }).catch(err => console.error(err.message))
 
     }
