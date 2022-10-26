@@ -6,7 +6,7 @@ const CoursesSidebar = () => {
 
     // as sidebar is fixed so we are loading data here
     useEffect(()=>{
-        fetch('http://localhost:5000/course_categories')
+        fetch('https://course-hub-server-theta.vercel.app/course_categories')
             .then(res => res.json())
             .then(data => setCategory(data))
     },[])

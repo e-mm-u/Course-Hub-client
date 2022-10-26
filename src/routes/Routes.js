@@ -30,7 +30,7 @@ const routes = createBrowserRouter([
                             </Col>
                         </Row>
                     </Container>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://course-hub-server-theta.vercel.app/courses')
             },
             // ---------------------- course layout
             {
@@ -41,26 +41,26 @@ const routes = createBrowserRouter([
                     {
                         path: '/courses',
                         element: <CourseContainer></CourseContainer>,
-                        loader: () => fetch('http://localhost:5000/courses')
+                        loader: () => fetch('https://course-hub-server-theta.vercel.app/courses')
                     },
                     // category wise course container 
                     {
                         path: '/courses/course_category/:id',
                         element: <CourseContainer></CourseContainer>,
-                        loader: ({ params }) => fetch(`http://localhost:5000/course_category/${params.id}`)
+                        loader: ({ params }) => fetch(`https://course-hub-server-theta.vercel.app/course_category/${params.id}`)
                     },
                     // individual course details page
                     {
                         path: '/courses/course/:id',
                         element: <CourseDetails></CourseDetails>,
-                        loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                        loader: ({ params }) => fetch(`https://course-hub-server-theta.vercel.app/course/${params.id}`)
 
                     },
                     // dynamic checkout routes
                     {
                         path: '/courses/checkout/course/:id',
                         element: <PrivateRoutes> <Checkout></Checkout></PrivateRoutes>,
-                        loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                        loader: ({ params }) => fetch(`https://course-hub-server-theta.vercel.app/course/${params.id}`)
                     }
                 ]
             },
