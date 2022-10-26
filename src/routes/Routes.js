@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import CourseDetails from "../components/courses/CourseDetails";
-import Four0Four from "../components/Four0Four";
 import Home from "../layouts/Home";
 import Login from "../components/logs/Login";
 import Register from "../components/logs/Register";
@@ -8,6 +7,9 @@ import Courses from "../layouts/Courses";
 import CourseContainer from "../components/courses/CourseContainer";
 import CoursesSidebar from "../components/courses/CoursesSidebar";
 import { Col, Container, Row } from "react-bootstrap";
+import Four0Four from "../components/others/Four0Four";
+import PrivateRoutes from "./PrivateRoutes";
+import Checkout from "../components/others/Checkout";
 
 const routes = createBrowserRouter([
     {
@@ -20,13 +22,13 @@ const routes = createBrowserRouter([
                 element:
                     <Container>
                         <Row>
-                        <Col xs={3} className='border border-danger'>
-                            <CoursesSidebar></CoursesSidebar>
-                        </Col>
-                        <Col xs={9} className='border border-danger'>
-                            <CourseContainer></CourseContainer>
-                        </Col>
-                    </Row>
+                            <Col xs={3} className='border border-danger'>
+                                <CoursesSidebar></CoursesSidebar>
+                            </Col>
+                            <Col xs={9} className='border border-danger'>
+                                <CourseContainer></CourseContainer>
+                            </Col>
+                        </Row>
                     </Container>,
                 loader: () => fetch('http://localhost:5000/courses')
             },
@@ -54,7 +56,12 @@ const routes = createBrowserRouter([
                         loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
 
                     },
-
+                    // dynamic checkout routes
+                    {
+                        path: '/courses/checkout/course/:id',
+                        element: <Checkout></Checkout>,
+                        loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                    }
                 ]
             },
             // -------------------

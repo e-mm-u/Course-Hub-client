@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, Image } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 
 const CourseDetails = () => {
     const course = useLoaderData();
-    const { photoURL, title, details, rating, fee, requiredTime } = course;
+    const { course_id, photoURL, title, details, rating, fee, requiredTime } = course;
     console.log(photoURL, title)
     return (
         <div className='my-3 d-flex justify-content-center'>
@@ -20,8 +21,12 @@ const CourseDetails = () => {
                     <span>{fee}$</span>
                 </div>
                 <div className="card-body d-flex gap-2">
-                    <Button>Enroll</Button>
-                    <Button>Get premium</Button>
+                    <LinkContainer to={`/courses/checkout/course/${course_id}`}>
+                        <Button>Enroll</Button>
+                    </LinkContainer>
+                    <LinkContainer to={`/courses/checkout/course/${course_id}`}>
+                        <Button>Get premium</Button>
+                    </LinkContainer>
                 </div>
             </div>
         </div>
