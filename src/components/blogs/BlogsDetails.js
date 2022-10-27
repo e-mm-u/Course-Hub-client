@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image } from 'react-bootstrap';
+import { Card} from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 
 const BlogsDetails = () => {
