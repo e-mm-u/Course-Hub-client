@@ -1,3 +1,26 @@
+## This is a online learning platform COURSE HUB. Where 
+
+ * You can visit the available courses
+ * You have to log in to purchase any course or to get premium access
+ * You can log in through email and password or if you are a little bit lazy, log in through GMAIL, GITHUB or FACEBOOK are just one click away!
+ * If you want, feel free to download pdf format of any course's detail
+ * Besides courses there are blog section where you may find some tutorials or question answer.
+ So welcome, visit more frequently to my application. here is the link : https://course-hub-69d38.web.app/ 
+ 
+ ## Technologies :
+ * Language : Javascript 
+ * Frontend Framework : 
+    * CSS : Bootstrap, React-bootstrap
+    * JavaScript : ReactJS
+ * Backend Framework :
+    * Server : ExpressJS
+    * Authentication : Firebase
+ * Deploy :
+    * Client : Firebase 
+    * Server : Vercel
+    
+ 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
