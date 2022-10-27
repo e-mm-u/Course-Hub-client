@@ -1,15 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
-import CourseDetails from "../components/courses/CourseDetails";
 import Home from "../layouts/Home";
 import Login from "../components/logs/Login";
 import Register from "../components/logs/Register";
 import Courses from "../layouts/Courses";
-import CourseContainer from "../components/courses/CourseContainer";
 import CoursesSidebar from "../components/courses/CoursesSidebar";
+import CourseContainer from "../components/courses/CourseContainer";
+import CourseDetails from "../components/courses/CourseDetails";
 import { Col, Container, Row } from "react-bootstrap";
 import Four0Four from "../components/others/Four0Four";
 import PrivateRoutes from "./PrivateRoutes";
 import Checkout from "../components/others/Checkout";
+import Blogs from "../layouts/Blogs";
+import BlogsContainer from "../components/blogs/BlogsContainer";
+import BlogsDetails from "../components/blogs/BlogsDetails";
 
 const routes = createBrowserRouter([
     {
@@ -64,8 +67,27 @@ const routes = createBrowserRouter([
                     }
                 ]
             },
-            // -------------------
+            // -------------------- blog layout 
+            
+            {
+                path : '/blogs',
+                element : <Blogs></Blogs>,
+                children : [
+                    {
+                        path : '/blogs',
+                        element : <BlogsContainer></BlogsContainer>,
+                        loader : ()=> fetch('http://localhost:5000/blogs/')
+                    },
+                    {
+                        path : '/blogs/:id',
+                        element : <BlogsDetails></BlogsDetails>,
+                        loader : ({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
+                    }
+                ]
 
+            },
+
+            // -------------------
             {
                 path: '/login',
                 element: <Login></Login>

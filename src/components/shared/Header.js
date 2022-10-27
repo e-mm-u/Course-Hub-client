@@ -30,7 +30,7 @@ const Header = () => {
                             <Nav.Link>FAQ</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to='/blog'>
+                        <LinkContainer to='/blogs'>
                             <Nav.Link>Blog</Nav.Link>
                         </LinkContainer>
 

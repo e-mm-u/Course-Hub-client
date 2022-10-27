@@ -1,0 +1,13 @@
+.scroll-hide {
+    max-height: 100vh;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.scroll-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-hide {
+    -ms-overflow-style: none;
+}
