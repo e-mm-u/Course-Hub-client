@@ -9,10 +9,10 @@ const Blogs = () => {
         <div className='mx-3 mt-2 mb-2'>
             <Row className='scroll-hide'>
             <h3 className='text-center text-dark'>Happy reading !</h3>
-                <Col xs={9} className='scroll-hide border-end border-success border-1' >
+                <Col xs={8} sm={9} className='scroll-hide border-end border-success border-1' >
                     <Outlet></Outlet>
                 </Col>
-                <Col xs={3} className='border-start border-info scroll-hide' >
+                <Col xs={4} sm={3} className='border-start border-info scroll-hide' >
                     <h6>Blog titles</h6>
                     <hr className='text-info'/>
                     <BlogSidebar></BlogSidebar>

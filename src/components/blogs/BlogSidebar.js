@@ -16,7 +16,7 @@ const BlogSidebar = () => {
                 blogs.map(blog => 
                     <div key={blog._id}>
                         <LinkContainer to={`/blogs/${blog._id}`}>
-                            <p>{blog.title}</p>
+                            <p className='text-secondary'>{blog.title}</p>
                         </LinkContainer>
                     </div>
                 )

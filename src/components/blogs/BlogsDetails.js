@@ -1,18 +1,20 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
+import { Card, Image } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 
 const BlogsDetails = () => {
     const blog = useLoaderData();
-    const {title, description, name, published, photoURL} = blog;
+    const { title, description, name, published, photoURL } = blog;
     return (
-        <div>
-            <Image src={photoURL} style={{height : '200px', width:'200px'}}></Image>
-            <h4>{title}</h4>
-            <small>{published}</small>
-            <small>{name}</small>
-            <p>{description}</p>
-        </div>
+        <Card className='border-0'>
+            <Card.Body className='d-flex justify-content-center'><Card.Img src={photoURL} style={{ height: '40vh', width: '60vw' }}></Card.Img></Card.Body>
+            <Card.Title className='mt-3 mb-0'>{title}</Card.Title>
+            <Card.Body className='d-flex flex-column align-items-end'>
+                <Card.Text className='mb-0'>{published}</Card.Text>
+                <Card.Text className='mb-0'>{name}</Card.Text>
+            </Card.Body>
+            <Card.Text>{description}</Card.Text>
+        </Card>
     );
 };
 

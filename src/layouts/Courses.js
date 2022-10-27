@@ -8,10 +8,10 @@ const Courses = () => {
     return (
         <div className='mx-3'>
             <Row className='scroll-hide mt-5 g-2'>
-                <Col xs={3} className='border-end  border-info scroll-hide'>
+                <Col xs={4} sm={3} className='border-end  border-info scroll-hide'>
                     <CoursesSidebar></CoursesSidebar>
                 </Col>
-                <Col xs={9} className='border-start border-danger scroll-hide'>
+                <Col xs={8} sm={9} className='border-start border-danger scroll-hide'>
                     <Outlet></Outlet>
                 </Col>
             </Row>
