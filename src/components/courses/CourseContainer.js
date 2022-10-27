@@ -6,7 +6,7 @@ const CourseContainer = () => {
     const courses = useLoaderData();
     return (
         // d-flex flex-wrap gap-3 justify-content-center
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-3'> 
+        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4'> 
             {
                 courses.map(course =>
                     <div className='col' key={course.course_id}>

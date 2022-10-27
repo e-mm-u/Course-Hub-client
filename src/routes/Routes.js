@@ -23,16 +23,16 @@ const routes = createBrowserRouter([
             {
                 path: '/',
                 element:
-                    <Container>
-                        <Row>
-                            <Col xs={3} className='border border-danger'>
+                    <div className='mx-3'>
+                        <Row className='scroll-hide mt-5 g-2'>
+                            <Col xs={3} className='border-end  border-info scroll-hide'>
                                 <CoursesSidebar></CoursesSidebar>
                             </Col>
-                            <Col xs={9} className='border border-danger'>
+                            <Col xs={9} className='border-start border-danger scroll-hide'>
                                 <CourseContainer></CourseContainer>
                             </Col>
                         </Row>
-                    </Container>,
+                    </div>,
                 loader: () => fetch('https://course-hub-server-theta.vercel.app/courses')
             },
             // ---------------------- course layout
@@ -68,20 +68,20 @@ const routes = createBrowserRouter([
                 ]
             },
             // -------------------- blog layout 
-            
+
             {
-                path : '/blogs',
-                element : <Blogs></Blogs>,
-                children : [
+                path: '/blogs',
+                element: <Blogs></Blogs>,
+                children: [
                     {
-                        path : '/blogs',
-                        element : <BlogsContainer></BlogsContainer>,
-                        loader : ()=> fetch('http://localhost:5000/blogs/')
+                        path: '/blogs',
+                        element: <BlogsContainer></BlogsContainer>,
+                        loader: () => fetch('http://localhost:5000/blogs/')
                     },
                     {
-                        path : '/blogs/:id',
-                        element : <BlogsDetails></BlogsDetails>,
-                        loader : ({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
+                        path: '/blogs/:id',
+                        element: <BlogsDetails></BlogsDetails>,
+                        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
                     }
                 ]
 

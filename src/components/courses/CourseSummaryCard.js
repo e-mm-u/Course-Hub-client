@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Image } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { FiDownload } from 'react-icons/fi';
+import { BsStarHalf } from 'react-icons/bs';
 
 const CourseSummaryCard = ({ course }) => {
     const { course_id, photoURL, title, details, rating, fee, requiredTime } = course;
@@ -13,13 +15,13 @@ const CourseSummaryCard = ({ course }) => {
             </div>
             <div className="card-body">
                 <div className='d-flex gap-4'>
-                    <span>{rating}  </span>
-                    <span>{requiredTime}  </span>
-                    <span>{fee}</span>
+                    <div className='d-flex gap-1 align-items-center'><p className='m-0'>{rating}</p><BsStarHalf></BsStarHalf></div>
+                    <p className='m-0'>{requiredTime} hr </p>
+                    <p className='m-0'>{fee} $</p>
                 </div>
                 <div className='mt-2'>
                     <LinkContainer to={`/courses/course/${course_id}`}>
-                        <Button className='w-100'>Details</Button>
+                        <Button className='w-100' variant='dark'>Details</Button>
                     </LinkContainer>
                 </div>
             </div>

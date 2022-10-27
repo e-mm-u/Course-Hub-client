@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import { AuthContext } from '../../contexts/AuthProvider';
+import '../../css/navbar.css'
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -16,12 +17,12 @@ const Header = () => {
     }
     return (
         <>
-            <Navbar bg="light" variant="light">
-                <Container>
+            <Navbar bg='dark' variant='dark' className='sticky-top'>
+                <Container className='d-flex align-items-center justify-content-between'>
                     <LinkContainer to='/'>
-                        <Navbar.Brand>Course-Hub</Navbar.Brand>
+                        <Navbar.Brand ><h2>Course-Hub</h2></Navbar.Brand>
                     </LinkContainer>
-                    <Nav className="me-auto d-flex flex-wrap">
+                    <Nav className="me-auto d-flex flex-wrap align-items-center">
                         <LinkContainer to='/courses'>
                             <Nav.Link>Courses</Nav.Link>
                         </LinkContainer>
@@ -35,7 +36,11 @@ const Header = () => {
                         </LinkContainer>
 
 
-                        <Nav.Link>Theme</Nav.Link>
+                        <div class="form-switch text-white d-flex gap-1">
+                            <small><input class="form-check-input" type="checkbox" role="switch" /></small> 
+                            <small>Dark</small>
+
+                        </div>
 
                         {
                             user?.uid ?
@@ -43,8 +48,8 @@ const Header = () => {
                                     <Image
                                         src={user?.photoURL ? user.photoURL : ' '}
                                         style={{
-                                            height: '30px',
-                                            width: '30px'
+                                            height: '26px',
+                                            width: '26px'
                                         }}
                                         roundedCircle></Image>
                                     <Nav.Link>{user.displayName}</Nav.Link>
