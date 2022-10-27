@@ -5,7 +5,7 @@ const BlogSidebar = () => {
     const [blogs, setblogs] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:5000/blogs/')
+        fetch('https://course-hub-server-theta.vercel.app/blogs/')
             .then(res => res.json())
             .then(data => setblogs(data))
     },[])

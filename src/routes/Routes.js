@@ -76,12 +76,12 @@ const routes = createBrowserRouter([
                     {
                         path: '/blogs',
                         element: <BlogsContainer></BlogsContainer>,
-                        loader: () => fetch('http://localhost:5000/blogs/')
+                        loader: () => fetch('https://course-hub-server-theta.vercel.app/blogs/')
                     },
                     {
                         path: '/blogs/:id',
                         element: <BlogsDetails></BlogsDetails>,
-                        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                        loader: ({ params }) => fetch(`https://course-hub-server-theta.vercel.app/blogs/${params.id}`)
                     }
                 ]
 
