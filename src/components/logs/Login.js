@@ -9,7 +9,7 @@ const Login = () => {
     const { user, logIn, googleLogin, githubLogin, facebookLogin } = useContext(AuthContext);
     const [err, seterr] = useState(' ');
     const navigate = useNavigate();
-    
+
     const location = useLocation();
     // get the location from private route if login page is visited beacause of private route
     let from = location.state?.from?.pathname || '/';
@@ -26,7 +26,7 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log(user);
                 form.reset();
-                navigate(from , {replace:true});
+                navigate(from, { replace: true });
             }).catch(err => seterr(err.message))
 
     }
@@ -35,26 +35,30 @@ const Login = () => {
         googleLogin()
             .then((userCredential) => {
                 const user = userCredential.user;
-                navigate(from , {replace:true});
+                navigate(from, { replace: true });
             }).catch(err => console.error(err.message))
     }
     const handleGithubLogin = () => {
         githubLogin()
-            .then((userCredential)=>{
+            .then((userCredential) => {
                 const user = userCredential.user;
-                navigate(from , {replace:true});
-            }).catch(err=>console.error(err.message))
+                navigate(from, { replace: true });
+            }).catch(err => console.error(err.message))
     }
     const handleFacebookLogin = () => {
         facebookLogin()
-            .then((userCredential)=>{
+            .then((userCredential) => {
                 const user = userCredential.user;
-                navigate(from , {replace:true});
-            }).catch(err=>console.error(err.message))
+                navigate(from, { replace: true });
+            }).catch(err => console.error(err.message))
     }
 
     return (
-        <div className='w-50 mx-auto my-4'>
+        <div className='w-50 mx-auto my-5'>
+            <div className='text-center'>
+                <h3 >LOG IN HERE</h3>
+                <hr />
+            </div>
             <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="form-email">
                     <Form.Label>Email address</Form.Label>
@@ -82,8 +86,8 @@ const Login = () => {
                 </Form.Group>
 
                 <div className='d-flex justify-content-between align-items-center'>
-                    <Button variant="light" type="submit">
-                        Log in
+                    <Button variant="dark" type="submit">
+                        LOG IN
                     </Button>
                     <LinkContainer to='/register'>
                         <p className='mb-0'> Don't have an account? </p>
@@ -97,13 +101,13 @@ const Login = () => {
             </div>
             {/* sign up buttons */}
             <div className='d-flex flex-column gap-2'>
-                <Button onClick={handleGoogleLogin} variant="light">
+                <Button onClick={handleGoogleLogin} variant="warning">
                     Continue with google
                 </Button>
-                <Button onClick={handleGithubLogin} variant="light">
+                <Button onClick={handleGithubLogin} variant="dark">
                     Continue with github
                 </Button>
-                <Button onClick={handleFacebookLogin} variant="light">
+                <Button onClick={handleFacebookLogin} variant="primary">
                     Continue with facebook
                 </Button>
             </div>

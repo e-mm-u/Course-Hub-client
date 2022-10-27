@@ -24,14 +24,14 @@ const Register = () => {
         const name = form.name.value;
         const photo = form.photo.value;
         // console.log(email, password, name, photo);
-       
+
         // use firebase function to create user
         createUser(email, password)
             .then((userCredential) => {
                 user = userCredential.user;
                 console.log('create user  ', user);
-                handleUpdateProfile (name, photo);
-                navigate(from , {replace:true});
+                handleUpdateProfile(name, photo);
+                navigate(from, { replace: true });
             }).catch(err => console.error(err.message))
 
     }
@@ -47,6 +47,10 @@ const Register = () => {
     }
     return (
         <div className='w-50 mx-auto my-4'>
+            <div className='text-center'>
+                <h3>PLEASE   REGISTER</h3>
+                <hr/>
+            </div>
             <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="form-email">
                     <Form.Label>Email address</Form.Label>
@@ -73,15 +77,15 @@ const Register = () => {
                     <Form.Control name='confirmpassword' type="password" placeholder="Re-type Password" />
                 </Form.Group>
 
-                <Form.Group className="mb-3">
+                {/* <Form.Group className="mb-3">
                     <Form.Text className="text-muted">
                         password doesn't match
                     </Form.Text>
-                </Form.Group>
+                </Form.Group> */}
 
                 <div className='d-flex justify-content-between align-items-center'>
-                    <Button variant="light" type="submit">
-                        Register
+                    <Button variant="dark" type="submit">
+                        REGISTER
                     </Button>
                     <LinkContainer to='/login'>
                         <p className='mb-0'> Already have an account? </p>

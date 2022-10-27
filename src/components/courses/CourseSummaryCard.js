@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Image } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { FiDownload } from 'react-icons/fi';
 import { BsStarHalf } from 'react-icons/bs';
 
 const CourseSummaryCard = ({ course }) => {

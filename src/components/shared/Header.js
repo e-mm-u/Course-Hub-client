@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { SiSololearn } from 'react-icons/si'
 import '../../css/navbar.css'
 
 const Header = () => {
@@ -20,7 +21,7 @@ const Header = () => {
             <Navbar bg='dark' variant='dark' className='sticky-top'>
                 <Container className='d-flex align-items-center justify-content-between'>
                     <LinkContainer to='/'>
-                        <Navbar.Brand ><h2>Course-Hub</h2></Navbar.Brand>
+                        <Navbar.Brand ><h2 className='align-self-center'><SiSololearn className='align-self-center'></SiSololearn> Course-Hub</h2></Navbar.Brand>
                     </LinkContainer>
                     <Nav className="me-auto d-flex flex-wrap align-items-center">
                         <LinkContainer to='/courses'>
